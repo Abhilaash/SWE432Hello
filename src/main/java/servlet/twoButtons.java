@@ -44,6 +44,7 @@ static String Servlet = "twoButtons";
 static String OperationAdd = "Add";
 static String OperationSub = "Subtract";
 static String OperationMul = "Multiply";
+static String OperationDiv = "Divide";
 
 // Other strings.
 static String Style ="https://www.cs.gmu.edu/~offutt/classes/432/432-style.css";
@@ -78,7 +79,11 @@ public void doPost (HttpServletRequest request, HttpServletResponse response)
    }
    else if (operation.equals(OperationMul))
    {
-      rslt = new Float(lhsVal.floatValue() - rhsVal.floatValue());
+      rslt = new Float(lhsVal.floatValue() * rhsVal.floatValue());
+   }
+   else if (operation.equals(OperationDiv))
+   {
+      rslt = new Float(lhsVal.floatValue() / rhsVal.floatValue());
    }
 
    response.setContentType("text/html");
@@ -150,6 +155,7 @@ private void PrintBody (PrintWriter out, String lhs, String rhs, String rslt)
    out.println(" <input type=\"submit\" value=\"" + OperationAdd + "\" name=\"Operation\">");
    out.println(" <input type=\"submit\" value=\"" + OperationSub + "\" name=\"Operation\">");
    out.println(" <input type=\"submit\" value=\"" + OperationMul + "\" name=\"Operation\">");
+   out.println(" <input type=\"submit\" value=\"" + OperationDiv + "\" name=\"Operation\">");
    out.println(" <input type=\"reset\" value=\"Reset\" name=\"reset\">");
    out.println("</form>");
    out.println("");
